@@ -46,10 +46,17 @@ test("Não deve aplicar um cupom de desconto expirado", () => {
     expect(total).toBe(160)
 })
 
-test("Deve calcular o frete com base nas dimensões e o peso dos produtos", () => {
+test("Valor minimo do frete deve ser 10", () => {
     const cpf = "839.435.452-10"
     const order = new Order(cpf);
     order.addItem(new Item(1, 'Fotografia', 'Camera', 30), 1, 20, 15, 10, 1)
     const frete = order.getFrete(1000);
-    expect(frete).toBe(9.99)
+    expect(frete).toBe(10)
+})
+test("Deve calcular o frete com base nas dimensões e o peso do produto", () => {
+    const cpf = "839.435.452-10"
+    const order = new Order(cpf);
+    order.addItem(new Item(1, 'Fotografia', 'Camera', 30), 1, 100, 30, 10, 3)
+    const frete = order.getFrete(1000);
+    expect(frete).toBe(30)
 })
