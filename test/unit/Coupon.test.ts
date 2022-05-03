@@ -1,4 +1,4 @@
-import Coupon from "../src/Coupon";
+import Coupon from "../../src/domain/entity/Coupon";
 
 test("Deve criar um cupom de desconto válido", () => {
   const coupon = new Coupon("VALE20", 20, new Date("2021-12-10"));
@@ -15,7 +15,7 @@ test("Deve criar um cupom de desconto expirado", () => {
 });
 
 test("Deve criar um cupom de desconto expirado", () => {
-    const coupon = new Coupon("VALE20", 20);
-    const discount = coupon.calculateDiscount(1000);
-    expect(discount).toBe(200);
-  });
+  const coupon = new Coupon("VALE20", 20);
+  const discount = coupon.calculateDiscount(1000);
+  expect(discount).toBe(200);
+});
